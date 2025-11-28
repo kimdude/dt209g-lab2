@@ -1,0 +1,59 @@
+body {
+    margin: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+nav {
+    padding: 10px;
+    background-color: rgb(235, 182, 69);
+}
+
+nav > ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+}
+
+nav > ul > li {
+    padding: 10px;
+}
+
+main {
+    width:80vw;
+    margin: auto;
+    padding: 20px 0px;
+}
+
+article {
+    border-radius: 5px;
+    padding: 5px 15px;
+    line-height: 0.8rem;
+    margin: 20px 0px;
+    background-color: rgb(243, 243, 243);
+}
+
+.priority1 {
+    border-left: 5px solid red;
+}
+
+.priority2 {
+    border-left: 5px solid rgb(255, 153, 0);
+}
+
+.priority3 {
+    border-left: 5px solid rgb(71, 158, 54);
+}
+
+.checkBox {
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 5px;
+    border: solid 1px rgb(173, 173, 173);
+}
+
+footer {
+    padding: 10px;
+    background-color: rgb(235, 182, 69);
+}
