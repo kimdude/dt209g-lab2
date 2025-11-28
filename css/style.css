@@ -55,6 +55,10 @@ article {
     border-left: 5px solid rgb(71, 158, 54);
 }
 
+.displayDate {
+    margin-top: 20px;
+}
+
 .checkBox {
     width: 20px;
     height: 20px;
@@ -66,11 +70,6 @@ article {
 
 .checkBox:hover {
     cursor: pointer;
-    background-color: rgb(120, 207, 113);
-    box-shadow: inset 0px 0px 0px 3px rgb(255, 255, 255);
-}
-
-.checkBox:active {
     background-color: rgb(120, 207, 113);
     box-shadow: inset 0px 0px 0px 3px rgb(255, 255, 255);
 }

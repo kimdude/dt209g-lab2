@@ -11,8 +11,8 @@ $sql = "
 DROP TABLE IF EXISTS bucketlist;
 CREATE TABLE bucketlist (
     id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(20) NOT NULL,
-    description VARCHAR(50),
+    name VARCHAR(30) NOT NULL,
+    description VARCHAR(70),
     priority TINYINT NOT NULL,
     created_at timestamp NOT NULL DEFAULT current_timestamp()
 );";

@@ -2,8 +2,8 @@
 
 class Bucketlist {
     private $db;
-    private $title;
-    private $description;
+    private $title = "";
+    private $description = "";
 
     function __construct() {
         $this->db = new mysqli(DBHOST, DBUSER, DBPASS, DBNAME);
@@ -23,8 +23,6 @@ class Bucketlist {
 
     //CREATE method to add item to bucketlist
     public function addItem(string $title, string $description, string $priority): bool {
-
-        if(!$this->setTitle($title) || !$this->setDesc($description)) return false;
 
         $sql = "INSERT INTO bucketlist(name, description, priority) VALUES ('$this->title', '$this->description', '$priority');";
 

@@ -19,11 +19,16 @@ if(isset($_GET['delete'])) {
 
 if(count($totalItems)> 0 ){
     foreach($totalItems as $item) {
+        //Formatting date
+        $date = date_create($item['created_at']);
+        $formattedDate = date_format($date, 'Y-m-d');
+
         ?>
             <article class="priority<?= $item['priority'] ?>">
                 <div class="textContainer">
                     <h3><?= $item['name'] ?></h3>
                     <p><?= $item['description'] ?></p>
+                    <p class="displayDate"><small><em>Tillagt <?= $formattedDate?></em></small></p>
                 </div>
                 <!-- Checkbox sending ID via URL -->
                 <a href="bucketlist.php?delete=<?= $item['id'] ?>" class="checkBox"></a>
@@ -32,16 +37,41 @@ if(count($totalItems)> 0 ){
     }
 }
 
+?>
+
+<!-- Adding item to bucketlist -->
+<h2>Lägg till i bucketlistan</h2>
+
+<?php
 //Adding new item to bucketlist
 if (isset($_POST['item'])) {
-    $added = $bucketlist->addItem($_POST['item'],$_POST['description'],$_POST['priority']);
+    $errorArr = [];
 
-    if($added) {
-        header("Location: bucketlist.php?message=Mål tillagt");
-        exit();
+    $newTitle = $bucketlist->setTitle($_POST['item']);
+    $newDesc = $bucketlist->setDesc($_POST['description']);
+
+    if(!$newTitle) array_push($errorArr, "Ange titel");
+    if(!$newDesc) array_push($errorArr, "Ange beskrivning");
+
+    if(count($errorArr) > 0) {
+        ?>
+        <ul>
+        <?php
+        foreach($errorArr as $error) {
+            echo "<li>" . $error . "</li>";
+        }
+        ?>
+        </ul>
+        <?php
     } else {
-        header("Location: bucketlist.php?message=Ett fel uppstod. Försök igen senare.");
-        exit();
+        $added = $bucketlist->addItem($_POST['item'],$_POST['description'],$_POST['priority']);
+
+        if($added) {
+            header("Location: bucketlist.php?message=Mål tillagt");
+            exit();
+        } else {
+            echo "<p class='confirmMessage'>Ett fel uppstod. Vänligen försök igen.</p>";
+        }
     }
 }
 
@@ -51,13 +81,12 @@ if(isset($_GET['message'])) {
 }
 ?>
 
-<!-- Adding item to bucketlist -->
-<h2>Lägg till i bucketlistan</h2>
+<!-- Form inputs -->
 <form method="post" action="bucketlist.php">
     <label for="item">Titel:</label><br>
-    <input type="text" id="item" name="item" required><br>
-    <labdel for="description">Beskrivning:</label><br>
-    <textarea id="description" name="description" required></textarea><br>
+    <input type="text" id="item" name="item" value="<?= $bucketlist->getTitle() ?>"><br>
+    <label for="description">Beskrivning:</label><br>
+    <textarea id="description" name="description"><?= $bucketlist->getDesc() ?></textarea><br>
     <select name="priority" id="priority">
         <option value="1">Hög</option>
         <option value="2">Medel</option>
