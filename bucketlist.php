@@ -87,12 +87,13 @@ if(isset($_GET['message'])) {
     <input type="text" id="item" name="item" value="<?= $bucketlist->getTitle() ?>"><br>
     <label for="description">Beskrivning:</label><br>
     <textarea id="description" name="description"><?= $bucketlist->getDesc() ?></textarea><br>
+    <label for="priority">Prioritet:</label><br>
     <select name="priority" id="priority">
         <option value="1">Hög</option>
         <option value="2">Medel</option>
         <option value="3">Låg</option>
     </select><br>
-    <input type="submit" value="Lägg till">
+    <input type="submit" value="Lägg till" class="addBtn">
 </form>
 
 <?php
