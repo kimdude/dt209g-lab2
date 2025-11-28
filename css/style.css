@@ -1,8 +1,21 @@
+/* General */
 body {
     margin: 0px;
     font-family: Arial, Helvetica, sans-serif;
 }
 
+main {
+    width:80vw;
+    margin: auto;
+    padding: 20px 0px;
+}
+
+footer {
+    padding: 10px;
+    background-color: rgb(235, 182, 69);
+}
+
+/* Main navigation */
 nav {
     padding: 10px;
     background-color: rgb(235, 182, 69);
@@ -19,13 +32,10 @@ nav > ul > li {
     padding: 10px;
 }
 
-main {
-    width:80vw;
-    margin: auto;
-    padding: 20px 0px;
-}
-
+/* Bucketlist */
 article {
+    display: flex;
+    align-items: center;
     border-radius: 5px;
     padding: 5px 15px;
     line-height: 0.8rem;
@@ -48,12 +58,42 @@ article {
 .checkBox {
     width: 20px;
     height: 20px;
+    margin-left: auto;
     background-color: white;
     border-radius: 5px;
     border: solid 1px rgb(173, 173, 173);
 }
 
-footer {
-    padding: 10px;
-    background-color: rgb(235, 182, 69);
+.checkBox:hover {
+    cursor: pointer;
+    background-color: rgb(120, 207, 113);
+    box-shadow: inset 0px 0px 0px 3px rgb(255, 255, 255);
+}
+
+.checkBox:active {
+    background-color: rgb(120, 207, 113);
+    box-shadow: inset 0px 0px 0px 3px rgb(255, 255, 255);
+}
+
+.confirmMessage {
+    position:fixed;
+    bottom: 40px;
+    left: 45%;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: rgba(255,165,0,0.5);
+    animation-name: hideMessage;
+    animation-duration: 0s;
+    animation-fill-mode: forwards;
+    animation-delay: 5s;
+}
+
+/* Animation för att dölja meddelande*/
+@keyframes hideMessage {
+    to {
+        height: 0px;
+        width: 0px;
+        overflow: hidden;
+        display: none;
+    }
 }

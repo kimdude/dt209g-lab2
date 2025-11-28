@@ -10,20 +10,44 @@ include("includes/header.php");
 $bucketlist = new Bucketlist();
 $totalItems = $bucketlist->getItems();
 
+//Deleting item from bucketlist
+if(isset($_GET['delete'])) {
+    $bucketlist->deleteItem($_GET['delete']);
+    header("Location: bucketlist.php?message=Grattis! Du klarade målet.");
+    exit();
+}
+
 if(count($totalItems)> 0 ){
     foreach($totalItems as $item) {
         ?>
             <article class="priority<?= $item['priority'] ?>">
-                <h3><?= $item['name'] ?></h3>
-                <p><?= $item['description'] ?></p>
-                <button class="checkBox"></button>
+                <div class="textContainer">
+                    <h3><?= $item['name'] ?></h3>
+                    <p><?= $item['description'] ?></p>
+                </div>
+                <!-- Checkbox sending ID via URL -->
+                <a href="bucketlist.php?delete=<?= $item['id'] ?>" class="checkBox"></a>
             </article>
         <?php
     }
 }
 
+//Adding new item to bucketlist
 if (isset($_POST['item'])) {
-    $bucketlist->addItem($_POST['item'],$_POST['description'],$_POST['priority']);
+    $added = $bucketlist->addItem($_POST['item'],$_POST['description'],$_POST['priority']);
+
+    if($added) {
+        header("Location: bucketlist.php?message=Mål tillagt");
+        exit();
+    } else {
+        header("Location: bucketlist.php?message=Ett fel uppstod. Försök igen senare.");
+        exit();
+    }
+}
+
+//Displaying message
+if(isset($_GET['message'])) {
+    echo "<p class='confirmMessage'>" .$_GET['message'] . "</p>";
 }
 ?>
 
