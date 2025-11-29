@@ -36,6 +36,55 @@ nav > ul > li {
     padding: 10px;
 }
 
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive nav */
+#navBtn {
+    display: none;
+    background-color: transparent;
+    border: none;
+}
+
+#navBtn:hover {
+    cursor: pointer;
+}
+
+#navBtnInput {
+    display: none;
+}
+
+#navBtnInput:checked ~ ul {
+    display: flex;
+}
+
+#navBtnInput:checked + #navBtn .bar3 {
+    display: none;
+}
+
+#navBtnInput:checked + #navBtn .bar1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+#navBtnInput:checked + #navBtn .bar2 {
+    transform: rotate(45deg);
+}
+
+span {
+    display: flex;
+    margin: 5px 0px;
+    padding: 2px;
+    width: 20px;
+    border-radius: 2px;
+    background-color: black;
+}
+
 /* Bucketlist */
 article {
     display: flex;
@@ -130,4 +179,9 @@ label {
         overflow: hidden;
         display: none;
     }
+}
+
+@media screen and (max-width: 800px) {
+    #navBtn { display: block; }
+    nav > ul { display: none; flex-direction: column;}
 }

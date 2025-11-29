@@ -9,6 +9,14 @@
 </head>
 <body>
     <nav>
+        <!-- Nav-button small screens -->
+        <input type="checkbox" id="navBtnInput" name="navBtn">
+        <label for="navBtnInput" id="navBtn">
+            <span class="bar1"></span>
+            <span class="bar2"></span>
+            <span class="bar3"></span>
+        </label>
+        <!-- Nav options -->
         <ul>
             <li><a href="index.php">Startsida</a></li>
             <li><a href="bucketlist.php">Bucketlist</a></li>
