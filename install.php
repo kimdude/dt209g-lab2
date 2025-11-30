@@ -9,7 +9,7 @@ if ($db->connect_error) {
 
 $sql = "
 DROP TABLE IF EXISTS bucketlist;
-CREATE TABLE bucketlist (
+CREATE TABLE dt209g_bucketlist (
     id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(30) NOT NULL,
     description VARCHAR(70),

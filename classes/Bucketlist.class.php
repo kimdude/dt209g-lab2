@@ -24,6 +24,10 @@ class Bucketlist {
     //CREATE method to add item to bucketlist
     public function addItem(string $title, string $description, string $priority): bool {
 
+        //Sanitize inputs
+        $title = $this->db->real_escape_string($title);
+        $description = $this->db->real_escape_string($description);
+
         $sql = "INSERT INTO bucketlist(name, description, priority) VALUES ('$this->title', '$this->description', '$priority');";
 
         $result = mysqli_query($this->db, $sql);

@@ -19,6 +19,10 @@ h2 {
     margin-top: 40px;
 }
 
+p {
+    max-width: 60ch;
+}
+
 /* Main navigation */
 nav {
     padding: 10px;
@@ -142,7 +146,7 @@ article {
 
 /* Form */
 input:not(.addBtn), textarea { 
-    width: 30%;
+    width: 50%;
     padding: 5px;
     border-radius: 5px;
     margin: 10px 0px;
@@ -181,7 +185,14 @@ label {
     }
 }
 
+/* Media queries */
 @media screen and (max-width: 800px) {
     #navBtn { display: block; }
     nav > ul { display: none; flex-direction: column;}
+    input:not(.addBtn), textarea { width: 80%; }
+    .confirmMessage { left: 35%; }
+}
+
+@media screen and (max-width: 800px) {
+    .confirmMessage { left: 25%;}
 }
