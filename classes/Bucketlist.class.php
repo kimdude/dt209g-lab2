@@ -15,7 +15,7 @@ class Bucketlist {
 
     //READ method to get all bucketlist items
     public function getItems(): array {
-        $sql = "SELECT * FROM bucketlist ORDER BY priority;";
+        $sql = "SELECT * FROM dt209g_bucketlist ORDER BY priority;";
         $result = mysqli_query($this->db, $sql);
 
         return mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -28,7 +28,7 @@ class Bucketlist {
         $title = $this->db->real_escape_string($title);
         $description = $this->db->real_escape_string($description);
 
-        $sql = "INSERT INTO bucketlist(name, description, priority) VALUES ('$this->title', '$this->description', '$priority');";
+        $sql = "INSERT INTO dt209g_bucketlist(name, description, priority) VALUES ('$this->title', '$this->description', '$priority');";
 
         $result = mysqli_query($this->db, $sql);
         return $result;
@@ -36,7 +36,7 @@ class Bucketlist {
 
     //DELETE method to remove item from bucketlist
     public function deleteItem(int $id): bool {
-        $sql = "DELETE FROM bucketlist WHERE id = $id;";
+        $sql = "DELETE FROM dt209g_bucketlist WHERE id = $id;";
         $result = mysqli_query($this->db, $sql);
         return $result;
     }

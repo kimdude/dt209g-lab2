@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="se">
+<html lang="sv">
 <head>
     <?php include("includes/config.php"); ?>
     <meta charset="UTF-8">
